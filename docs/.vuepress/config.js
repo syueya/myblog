@@ -1,4 +1,5 @@
-const nav = require('./config/nav.js');
+import dayjs from 'dayjs'
+const nav = require('./config/nav.js')
 
 module.exports = {
   theme: 'vuepress-theme-vdoing', // 使用依赖包主题
@@ -24,7 +25,7 @@ module.exports = {
     editLinkText: "帮助我们改善此页面！", //编辑此页 链接的文字。类型： string。默认值： 'Edit this page'
 
     // 以下配置是Vdoing主题改动的和新增的配置
-    sidebar: { mode: 'structuring', collapsable: false}, // 侧边栏,温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
+    sidebar: { mode: 'structuring', collapsable: false }, // 侧边栏,温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
     category: true, // 是否打开分类功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含分类字段 2.页面中显示与分类相关的信息和模块 3.自动生成分类页面（在@pages文件夹）。如关闭，则反之。
     tag: true, // 是否打开标签功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含标签字段 2.页面中显示与标签相关的信息和模块 3.自动生成标签页面（在@pages文件夹）。如关闭，则反之。
 
@@ -76,8 +77,7 @@ module.exports = {
       "@vuepress/last-updated", // "上次更新"时间格式
       {
         transformer: (timestamp, lang) => {
-          const dayjs = require("dayjs"); // 导入dayjs，https://day.js.org/
-          return dayjs(timestamp).format("YYYY/MM/DD, HH:mm:ss");
+          return dayjs(timestamp).format("YYYY/MM/DD, HH:mm:ss")
         },
       },
     ],
@@ -110,4 +110,4 @@ module.exports = {
 
   // 监听文件变化并重新构建
   extraWatchFiles: [".vuepress/config.js"],
-};
+}
