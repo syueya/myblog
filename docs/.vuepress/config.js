@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 const nav = require('./config/nav.js')
 
 module.exports = {
@@ -77,6 +76,7 @@ module.exports = {
       "@vuepress/last-updated", // "上次更新"时间格式
       {
         transformer: (timestamp, lang) => {
+          const dayjs = require("dayjs") // 导入dayjs，https://day.js.org/
           return dayjs(timestamp).format("YYYY/MM/DD, HH:mm:ss")
         },
       },
