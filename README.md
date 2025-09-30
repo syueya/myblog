@@ -12,5 +12,5 @@ cd vuepress-theme-vdoing
 npm install # or yarn install
 
 # develop
-npm run dev # or yarn dev
+npm run dev # or yarn dev，win端运行npm run dev:win
 ```
