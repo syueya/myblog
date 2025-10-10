@@ -10,19 +10,14 @@ env: # 设置环境变量
 jobs:
   build: # 自定义名称
     runs-on: ubuntu-latest # 运行在虚拟机环境ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
       - name: Checkout
         uses: actions/checkout@master  # 使用的动作。格式：userName/repoName。作用：检出仓库，获取源码。 官方actions库：https://github.com/actions
       
       - name: Setup Node.js ${{ matrix.node-version }} # 步骤2
-        uses: actions/setup-node@v3 # 作用：安装nodejs
+        uses: actions/setup-node@v4 # 作用：安装nodejs
         with:
-          node-version: ${{ matrix.node-version }} # 版本
+          node-version: '20' # 版本
           
       - name: Build-and-deploy # 步骤3
         run: |
