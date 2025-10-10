@@ -26,21 +26,24 @@ jobs:
           
       - name: Build-and-deploy # 步骤3
         run: |
-          remote_addr=`git remote get-url --push origin`
-          commit_info=`git describe --all --always --long`
-          user_name=`git log -1 --pretty=format:'%an'`
-          user_email=`git log -1 --pretty=format:'%ae'`
+          # 配置
           deploy_branch=gh-pages
+
+          # 构建项目
           yarn
           yarn build
-          cd docs/.vuepress/dist
-          git config --global init.defaultBranch $deploy_branch
+
+          # 部署
+          cd docs/.vuepress/dist || exit  # 目录不存在时自动退出
           git init
-          git config user.name ${user_name}
-          git config user.email ${user_email}
+          git config user.name "syueya"
+          git config user.email "1525817566@qq.com"
           git add -A
-          git commit -m "auto deploy, $commit_info"
-          remote_addr=`echo $remote_addr | awk -F'://' '{print $2}'`
-          remote_addr=https://${user_name}:${{secrets.ACCESS_TOKEN}}@${remote_addr}
+          git commit -m "auto deploy: $(git rev-parse --short HEAD)" 
+
+          # 远程地址处理
+          remote_addr="https://${{secrets.ACCESS_TOKEN}}@github.com/syueya/myblog.git"
           git remote add origin ${remote_addr}
-          git push origin HEAD:$deploy_branch --force # 推送到github $deploy_branch分支
+
+          # 推送到github $deploy_branch分支
+          git push origin HEAD:$deploy_branch --force
