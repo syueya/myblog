@@ -45,12 +45,6 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         items: [
         ],
       },
-      {
-        text: '其他',
-        link: '/other/',
-        items: [
-        ],
-      },
 
       {
         text: '索引',
