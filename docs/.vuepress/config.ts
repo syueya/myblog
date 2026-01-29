@@ -34,8 +34,9 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         link: '/nas/',
         items: [
           { text: '影视', link: '/pages/6ce0d6/' },
-          { text: '影视工具', link: '/pages/d18a53/' },
-          { text: '工具', link: '/pages/1a4d3b/' },
+          { text: '影视工具', link: '/pages/9efbd2/' },
+          { text: '常用工具', link: '/pages/1a4d3b/' },
+          { text: 'AI工具', link: '/pages/ebfad1/' },
           { text: '其它', link: '/pages/21d20f/' },
         ],
       },
